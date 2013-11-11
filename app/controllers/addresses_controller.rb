@@ -2,8 +2,11 @@ require 'open-uri'
 require 'json'
 
 class AddressesController < ApplicationController
+ 
+
+
   def fetch_coordinates
-    @address = "the corner of Foster and Clark"
+    @address = params[:address]
     @url_safe_address = "http://maps.googleapis.com/maps/api/geocode/json?address=" + URI.encode(@address) + "&sensor=false"
 
 
@@ -19,5 +22,8 @@ class AddressesController < ApplicationController
     @longitude = location["lng"]
     #@latitude = parsed_data["results"][0]["geometry"]["location"]["lat"]]
 
+    
   end
+
+
 end
